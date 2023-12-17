@@ -20,7 +20,7 @@ spec:
   selector:
     matchLabels:
       app: hello-python
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -28,7 +28,10 @@ spec:
     spec:
       containers:
       - name: flask-change
-        image: flask-change:latest
-        imagePullPolicy: Never
+        image: swr.cn-north-1.myhuaweicloud.com/arik-demo/py-sample:1
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
+      imagePullSecrets:
+      - name: regcred
+
